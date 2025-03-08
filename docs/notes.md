@@ -243,3 +243,11 @@ controllers
 components and slots, (commands for creating components)
 class components
 dealing with data and methods from class based componets in side blade files
+
+Handling database configurations from model class
+database name
+auto increment 
+keytypes
+primary keys
+timestamps
+changing created_at, and updated_at fields
