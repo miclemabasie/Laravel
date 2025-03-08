@@ -237,3 +237,9 @@ php artisan test
 
 This document serves as a **quick reference** for Laravel’s essential features. Mastering these concepts will help you transition smoothly from Django to Laravel! 🚀
 
+
+
+controllers
+components and slots, (commands for creating components)
+class components
+dealing with data and methods from class based componets in side blade files
