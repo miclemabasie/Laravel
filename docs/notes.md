@@ -352,3 +352,27 @@ class Car extends Model{
     // Approach 4
     Car::truncate() // Deletes all the cars from the database, does not mark as deleted)at, trashes everything
 ```
+
+### Challenge
+```php
+    // Challenge 1: Retrieve all cars where the price is greater than 20000
+    $cars = Car::where('price' '>' 20000)->get();
+
+    // Challenge 2: Fetch the Maker details where the maker is toyota
+    $toyotaMaker = Maker::where('name', 'toyota')->first();
+
+    // Challenge: Insert a new FuelType with the name 'Electric'
+    $fuelTypeData = ['name' => 'Electric'];
+    FuelType::create($fuelTypeData);
+
+    // Update the price of the car with id 1 to 15000
+    $car = Car::find(1);
+    $car->price = 150000;
+    $car->save();
+
+    // Challenge: Delete all car records where the year is before 2020
+    Car::where('year' '<' 2020)
+    ->delete();
+
+
+```
