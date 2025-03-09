@@ -326,6 +326,29 @@ class Car extends Model{
 
     // Performing mass updates
     Car::where('published_at', null)
-    ->where('user_id', 1)
+    ->where('user_id', 1) // updates all the cars created by user with id 1, where published = null
     ->update(['published_at' => now()])
+```
+
+
+### Deleting data from the database
+
+```php
+    // Approach 1 -> this only sets the deleted_at attribute in the database, which will make the recode null
+    // this is because of softdeletes being activated in the model
+   $car = Car::find(1);
+   $car->delete();
+
+//    Approach 2
+    $carId = $request->get('car_id')
+    Car::destroy([$carId, ]);
+
+    // Approach 3
+    Car::where('published_at', null)
+    ->where('user_id', 1)
+    ->delete();
+
+
+    // Approach 4
+    Car::truncate() // Deletes all the cars from the database, does not mark as deleted)at, trashes everything
 ```
