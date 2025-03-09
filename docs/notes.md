@@ -277,3 +277,55 @@ $car->save();
 $car = new Car($carData);
 $car->save();
 ```
+
+### Activating fillable fields in the models
+This is done to prevent fields like id fields, to be filled from the user data from the form like so
+Example of activating fillable fields in the model
+
+```php
+class Car extends Model{
+
+    // ....
+
+    protected $fillable = {
+        "maker_id"
+        "model_id"
+        "year"
+        "price"
+        "vin"
+        "mileage"
+        "car_type_id"
+        "fuel_type_id"
+        "user_id"
+        "city_id"
+        "address"
+        "phone"
+        "description"
+        "published_at"
+        "deleted_at"
+    }
+
+    // provide fields that should not be fields, it is opposite of $fillable
+    protected $guarded = [
+        'user_id'
+    ]
+}
+```
+
+### Updating elements in the database
+```php
+    $car = Car::find(1);
+    $car->model = 'Sonata';
+    $car->save();
+
+    // Approach 2
+
+    $car = Car::updateOrCreate([
+        'make'=>'Toyota', 'model'=>'Camry'], // criteria for the where clause
+        ['model'=>'CAMRY']) // updates to be made
+
+    // Performing mass updates
+    Car::where('published_at', null)
+    ->where('user_id', 1)
+    ->update(['published_at' => now()])
+```
