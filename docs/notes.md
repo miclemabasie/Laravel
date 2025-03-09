@@ -251,3 +251,29 @@ keytypes
 primary keys
 timestamps
 changing created_at, and updated_at fields
+
+
+### Creating object instances
+Approach 1
+```php
+$car = Car();
+$car->make = 'Toyota';
+$car->model = 'Camry';
+$car->save();
+
+// Approach 2 
+$carData = [
+    'make' => 'Toyota',
+    'model' => 'Camry'
+]
+$car = Car::create($carData);
+
+// Approach 3 // using fill
+$car = new Car();
+$car->fill($carData);
+$car->save();
+
+// Approach 4 // using implicit fill method
+$car = new Car($carData);
+$car->save();
+```
